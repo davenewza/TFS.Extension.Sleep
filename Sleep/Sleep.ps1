@@ -1,16 +1,15 @@
 
 Param
 (
-	[Parameter(Mandatory=$true)][int]$Seconds,
-	[Parameter(Mandatory=$true)][string]$unit 
+    [Parameter(Mandatory=$true)][int]$value,
+    [Parameter(Mandatory=$true)][string]$unit 
 )
 
-Write-Output "Sleep $($Seconds) $($unit)."
+Write-Output "Sleep $($value) $($unit)."
 
-if($unit -eq  "Minutes")
+if($unit -eq  "Minutes") 
 {
-    $unit = "Seconds"
-    $Seconds = $Seconds * 60
+    $value = $value * 60
 }
 
-iex "Start-Sleep -$($unit) $($Seconds)"
+iex "Start-Sleep -seconds $($value)"
